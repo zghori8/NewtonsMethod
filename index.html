@@ -3,152 +3,164 @@
 <head>
 	<meta charset="utf-8">
 	
-	<title>Arrays 2.7A</title>	
+	<title>Newtons Method</title>	
 	
-	<meta name="description" content="Arrays 2.7A">
+	<meta name="description" content="Newtons Method">
 	<meta name="author" content="Zainab Ghori">	
 	
 	<link rel="stylesheet" href="animate.css">
-        <link rel="shortcut icon" href="http://www.freeiconspng.com/uploads/black-link-icon-2.png" />
-	<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+    	<link rel="shortcut icon" href="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/3d-transparent-glass-icons-symbols-shapes/016935-3d-transparent-glass-icon-symbols-shapes-puzzle3-ps.png" />
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 
 <style>
     body {
-	font-family: "Concert One";
-	background-image: url("http://awswallpapershd.com/wp-content/uploads/2017/02/christmas_wallpaper_design_love_fest.jpg");
-	background-size: cover;
-	font-size: 20px;
-     }
-   .back-button {
-        border-radius: 28px;
-        border: 2px solid white;
-   }
-   .back-button:hover {
-        text-decoration: none;
-        box-shadow: 3px 3px 3px 3px #ffffff;
-       -webkit-box-shadow: 3px 3px 3px 3px #ffffff;
-       -moz-box-shadow: 3px 3px 3px 3px #ffffff;
-   }
-    #reportContainer {
-        position: relative;
-        margin-left: 40px;
-        margin-right: auto;
-        margin-top: 10px;
-        width: 45%; 
-        padding: 2%; 
-        background: rgba(255, 245, 224, 0.84);
-        border-radius: 1.0em; 
-        border: 3px dashed blue;
+	padding: 20px;
+	background-image: url("http://img.wallpaper.sc/desktop/images/5k/thumbnail/desktop-pc-1920x1080-thumbnail_00235.jpg");
+	background-attachment: fixed;
+	font-size: 18px;
+	font-family: "Lato";
     }
-   .image1 {position: relative; bottom: 65px; right: 95px;}
-   .image2 {position: relative; bottom: 72px; right: 92px;}
-   .image3 {position: relative; bottom: 72px; right: 92px;}
-   .image4 {position: relative; bottom: 68px; right: 96px;}
-   .image5 {position: relative; bottom: 72px; right: 92px;}
-   .image6 {position: relative; bottom: 72px; right: 85px;}
-   .image7 {position: relative; bottom: 72px; right: 80px;}
-   .image8 {position: relative; bottom: 72px; right: 75px;}
-
-   .imageA {position: relative; bottom: 65px; right: 95px;}
-   .imageB {position: relative; bottom: 72px; right: 92px;}
-   .imageC {position: relative; bottom: 72px; right: 92px;}
-   .imageD {position: relative; bottom: 68px; right: 96px;}
-   .imageE {position: relative; bottom: 72px; right: 92px;}
-   .imageF {position: relative; bottom: 72px; right: 85px;}
-   .imageG {position: relative; bottom: 72px; right: 80px;}
-   .imageH {position: relative; bottom: 72px; right: 75px;}
-   .submit {
+    .eqn {
+	background-color: white;
+	padding: 15px;
+	border: 2px solid black;
+	height: 160px;
+	width: 460px;
+    }
+    h1 {
+	font-family: "Bungee";
+	font-size: 35px;
+	color: #c15436;
+        text-shadow: 2px 2px 4px black;
+    }
+    h2 {
+	font-family: Century Gothic;
+	color: #5374bc;
+	font-size: 20px;
+    }
+    .button {
         padding: 5px 8px;
         font-size: 15px;
         text-align: center;
         cursor: pointer;
         outline: none;
         color: #000;
-        background-color: #e36539;
+        background-color: #88e0a7;
         border: none;
-        border-radius: 13px;
+        border-radius: 10px;
         box-shadow: 0 5px #999;
    }
-   .submit:hover {
-        background-color: #27c858;
-        color: #ffffff;
+   .button:hover {
+        background-color: #3c718e;
+        color: #000000;
    }
+    #reportContainer {
+        position: relative;
+        margin-left: 20px;
+        margin-right: auto;
+        margin-top: 10px;
+        width: 58%; 
+        padding: 2%; 
+        background: rgba(255, 250, 224, 0.85);
+        border-radius: 1.0em; 
+        border: 4px dotted #5cce0d;
+    }
+    .back-button {
+        border-radius: 30px;
+        border: 2px solid white;
+    }
+    .back-button:hover {
+        text-decoration: none;
+        box-shadow: 3px 3px 3px 3px #000000;
+       -webkit-box-shadow: 3px 3px 3px 3px #000000;
+       -moz-box-shadow: 3px 3px 3px 3px #000000;
+    }
+    #myBtn:hover {
+	background-color: #cce6ff; /* Add a dark-grey background on hover */
+	color: black;
+    }
+    #myBtn {
+	font-size: 15px;
+	display: none; /* Hidden by default */
+	position: fixed; /* Fixed/sticky position */
+	bottom: 20px; /* Place the button at the bottom of the page */
+	right: 30px; /* Place the button 30px from the right */
+	z-index: 99; /* Make sure it does not overlap */
+	border: none; /* Remove borders */
+	outline: none; /* Remove outline */
+	background-color: #3c0956; /* Set a background color */
+	color: white; /* Text color */
+	cursor: pointer; /* Add a mouse pointer on hover */
+	padding: 13px; /* Some padding */
+	border-radius: 15px; /* Rounded corners */
+    }
+   .input {
+        border-radius: 6px;
+        border: 1.5px solid #3b0a1a;
+        font-size: 15px;
+        font-family: Century Gothic;
+        box-shadow: 2px 2px 7px 3px #c079ff;
+    }
 </style>
-</head>
 
 <body>
-<a href="http://ics.actonhighschool.ca/2017-2018/ghorib3cf8/"><img src="http://lh3.googleusercontent.com/mZbIGo3uqmfBqFjM7T-CrvBB4QNQY9EUECOTtlZ_dfltNGpU-m3oSZbLrxD27XbrWHD3=w300" alt="Back Button" title="Back" class="back-button" style="width:50px; height:50px;" /></a></center>
-<center><div id="reportContainer">
 
-	<form method="post" action="activity-2-7-arrays-a.php">
-		<input type="radio" name="number" value="0">0</input>
-		<input type="radio" name="number" value="1">1</input>
-		<input type="radio" name="number" value="2">2</input>
-		<input type="radio" name="number" value="3">3</input>
-		<input type="radio" name="number" value="4">4</input><br><br>
-		<input type="radio" name="number" value="5">5</input>
-		<input type="radio" name="number" value="6">6</input>
-		<input type="radio" name="number" value="7">7</input>
-		<input type="radio" name="number" value="8">Show All</input>
-		<input type="radio" name="number" value="9">Randomize</input><br><br>
-		<input class="submit" type="submit" name="submit" value="ASSEMBLE"></input><br />
+<a href="http://ics.actonhighschool.ca/2017-2018/ghorib3cf8/"><img src="https://lh3.googleusercontent.com/tK6YGDCqciKOl4gLYohZF6l7piBHb0CI0nHCN341LSJ0Vw9P_VASc49ZQAMaosFmYYlc=w300" alt="Back Button" title="Back" class="back-button" style="width:60px; height:60px;" /></a>
+<h1 span class="animated jello"><center>NEWTONS METHOD</h1></center>
+<button class="fancy" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById("myBtn").style.display = "block";
+		} else {
+			document.getElementById("myBtn").style.display = "none";
+		}
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+	</script>
+<h2><center>Newton's Method is an excellent example of a recursive algorithm.  It is a very old algorithm dating 1000s of years back - it was improved upon by Newton and the Calculus that he developed.  This algorithm can be used to quickly calculate the square root of a number to a high degree of accuracy without using a calculator.</h2>
+<center><a href="https://www.codecogs.com/eqnedit.php?latex=\fn_cm&space;\large&space;x_{n&plus;1}=\frac{1}{2}(x_{n}&space;&plus;&space;\frac{a}{x_{n}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\fn_cm&space;\large&space;x_{n&plus;1}=\frac{1}{2}(x_{n}&space;&plus;&space;\frac{a}{x_{n}})" title="\large x_{n+1}=\frac{1}{2}(x_{n} + \frac{a}{x_{n}})" class="eqn" /></a></center>
+<div id="reportContainer">
+	<form method="post" action="preformance-task-newtons-method.php">
+		<p class="info"><b>Number you want to take the square root of:</b></p>
+		<input class="input" type="text" name="number" value="<?php echo $_POST['number']; ?>" autocomplete="off" placeholder="numerical value"></input>
+		<p class="info"><b>Number of iterations of the recursion:</b></p>
+		<input class="input" type="text" name="iteration" value="<?php echo $_POST['iteration']; ?>" autocomplete="off" placeholder="numerical value"></input><br><br>
+		<input class="button" type="submit" name="submit" value="CALCULATE"></input><br><br>
 	</form>
 
 <?php
 
+	if($_POST['submit']) {
+    		$num = $_POST['number'];
+    		$y = $_POST['iteration'];
+	}
 
-if($_POST['submit']) {
-$train[0] = "Santa";
-$train[1] = "Present";
-$train[2] = "Elf";
-$train[3] = "Rudolph";
-$train[4] = "Candy Cane";
-$train[5] = "Gingerbread Cookie";
-$train[6] = "Dove";
-$train[7] = "Coal";
-$train[8] = "Show all";
-$train[9] = "Randomize";
-$number = $_POST['number'];
-$roll = rand(0,9); 
-
-
-	if($number == "") {
-		echo "<br /><br /><mark>Please select a value.</mark>";
+	if ($y > 20) {
+		echo "<mark><b>Iterations are limited to 20.</b></mark>";
+	} else if ($num == "" OR $y == "") {
+		echo "<mark><b>Please fill all fields.</b></mark>";
+	} else if ($num <= 0) {
+		echo "<mark><b>Number must be greater than zero.</b></mark>";
+	} else {
+		do {
+		$num2 = ($num + ($num / $num)) / 2;
+		echo "" . $num2 . "";
+		$num2++;
+	} while ($y < 20) {
 	}
-	else {
-	if($number == "0") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image1' src='http://pngimg.com/uploads/santa_claus/santa_claus_PNG38508.png' alt='santa' title='Santa' style='width:90px;height:68px;' />";
-	}
-	if($number == "1") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image2' src='https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Gifts-and-Chocolates-PNG-/Transparent_White_Present_Box_with_Red_Bow_PNG_Clipart.png?m=1415797080' alt='present' title='Present' style='width:80px;height:60px;' />";
-	}
-	if($number == "2") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image3' src='http://cliparts.co/cliparts/6ir/oy8/6iroy8LrT.png' alt='elf' title='Elf' style='width:90px;height:68px;' />";
-	}
-	if($number == "3") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image4' src='http://moziru.com/images/reindeer-clipart-transparent-background-7.png' alt='Rudoplh' title='Rudolph' style='width:90px;height:68px;' />";
-	}
-	if($number == "4") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image5' src='https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Christmas-PNG/Candy_Cane_with_Mistletoe_PNG_Clipart.png?m=1434276589' alt='Candy Cane' title='Candy Cane' style='width:55px;height:68px;' />";
-	}
-	if($number == "5") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image6' src='https://vignette.wikia.nocookie.net/shrek/images/f/f7/Gingy-shrek-conrad-vernon.png/revision/latest?cb=20110612112113' alt='Cookie' title='Cookie' style='width:55px;height:68px;' />";
-	}
-	if($number == "6") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image7' src='http://clipartix.com/wp-content/uploads/2016/04/Dove-clipart-transparent-no-background-free.png' alt='Turtle Dove' title='Dove' style='width:55px;height:68px;' />";
-	}
-	if($number == "7") {
-		echo "<br /><br /><img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='image8' src='http://hddfhm.com/images/christmas-coal-clipart-1.png' alt='Coal' title='Coal' style='width:55px;height:68px;' />";
-	}
-        if($number == "8") {
-            for($i = 0; $i <= 8; $i++) {
-                echo "<img src='http://clipartix.com/wp-content/uploads/2016/04/Train-free-to-use-clip-art-2.png' alt='trainfront' title='Front' style='width:130px;height:110px;align:center' /><img src= 'http://www.clker.com/cliparts/7/4/U/y/L/i/loco-train-hi.png' style='width: 100px; height:70px;' /><img class='imageA' src='http://pngimg.com/uploads/santa_claus/santa_claus_PNG38508.png' alt='santa' title='Santa' style='width:90px;height:68px;' /><img class='imageB' src='https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Gifts-and-Chocolates-PNG-/Transparent_White_Present_Box_with_Red_Bow_PNG_Clipart.png?m=1415797080' alt='present' title='Present' style='width:80px;height:60px;' /><img class='imageC' src='http://cliparts.co/cliparts/6ir/oy8/6iroy8LrT.png' alt='elf' title='Elf' style='width:90px;height:68px;' />
-		<img class='imageD' src='http://moziru.com/images/reindeer-clipart-transparent-background-7.png' alt='Rudoplh' title='Rudolph' style='width:90px;height:68px;' /><img class='imageE' src='https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Christmas-PNG/Candy_Cane_with_Mistletoe_PNG_Clipart.png?m=1434276589' alt='Candy Cane' title='Candy Cane' style='width:55px;height:68px;' /><img class='imageF' src='https://vignette.wikia.nocookie.net/shrek/images/f/f7/Gingy-shrek-conrad-vernon.png/revision/latest?cb=20110612112113' alt='Cookie' title='Cookie' style='width:55px;height:68px;' /><img class='imageG' src='http://clipartix.com/wp-content/uploads/2016/04/Dove-clipart-transparent-no-background-free.png' alt='Turtle Dove' title='Dove' style='width:55px;height:68px;' /><img class='imageH' src='http://hddfhm.com/images/christmas-coal-clipart-1.png' alt='Coal' title='Coal' style='width:55px;height:68px;' />";
-        }
-}
-}
-}
+}	
 ?>
+	
 
 </body>
 </html>
